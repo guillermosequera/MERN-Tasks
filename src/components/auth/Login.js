@@ -1,9 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom'
 
 const Login = () => {
 
-    const onChange = () => {
+    //State para inciar sesion
+    const [ usuario, guardarUsuario] = useState({
+        email: '',
+        password: ''
+    });
 
+    //extraer de usuario
+    const { email, password } = usuario; 
+
+    const onChange = e => {
+        guardarUsuario({
+            ...usuario,
+            [e.target.name] : e.target.value
+        })
+    }
+
+    //cuando el usuario quiere iniciar sesion
+    const onSubmit = e => {
+        e.preventDefault();
+
+        //validando que no haya campos vacios
+
+        //pasarlo al action
     }
 
     return (
@@ -11,7 +33,9 @@ const Login = () => {
             <div className="contenedor-form sombra-dark">
                 <h1>Login</h1>
 
-                <form>
+                <form
+                    onSubmit={onSubmit}
+                >
                     <div className="campo-form">
                         <label htmlFor="email">Email</label>
                         <input
@@ -19,6 +43,7 @@ const Login = () => {
                             id="email"
                             name="email"
                             placeholder="Your Mail"
+                            value={email}
                             onChange={onChange}
                         />
                     </div>
@@ -30,6 +55,7 @@ const Login = () => {
                             id="password"
                             name="password"
                             placeholder="Your Password"
+                            value={password}
                             onChange={onChange}
                         />
                     </div>
@@ -39,6 +65,10 @@ const Login = () => {
                         value="Login" />
                     </div>
                 </form>
+
+                <Link to={'/new-account'} className="enlace-cuenta">
+                    Get account
+                </Link>
             </div>
         </div>
     );
