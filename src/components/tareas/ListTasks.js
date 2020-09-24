@@ -17,13 +17,19 @@ const ListTasks = () => {
             <ul className="listado-tareas">
                 {tareasProyecto.length === 0 
                     ? (<li className="tarea"><p>No homework</p></li>)
-                    : {tareasProyecto.map(tarea => (
+                    : tareasProyecto.map(tarea => (
                         <Tasks
                             tarea={tarea}
                         />
-                    ))}
+                    ))
                 }
             </ul>
+
+            <button
+                type="button"
+                className="btn btn-eliminar"
+            >Delete Project &times;</button>
+
         </Fragment>
     );
 }
