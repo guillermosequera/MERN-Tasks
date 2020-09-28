@@ -1,6 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
+import projectContext from '../../context/projects/projectContext';
 
 const FormTasks = () => {
+
+    //extrayendo si un proyecto esta activo
+    const proyectosContext = useContext(projectContext);
+    const { proyecto } = proyectosContext;
+
+    //Si no hay proyecto seleccionado
+    if(!proyecto) return null;
+
+    //array destructuring para extraer el proyecto actual
+    const [proyectoActual] = proyecto;
+
     return (
         <div className="formulario">
             <form>
