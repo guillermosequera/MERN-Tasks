@@ -12,13 +12,10 @@ const ListProyect = () => {
     //obtener proyectos cuando carga el componente
     useEffect(() => {
         obtenerProyectos();
-        // return () => {
-        //     cleanup
-        // }
     }, []);
 
     //revisar si proyectos tiene contenido
-    if(proyectos.length === 0) return null;
+    if(proyectos.length === 0) return <p>There are no projects, start by creating one</p>;
 
 
     return (
