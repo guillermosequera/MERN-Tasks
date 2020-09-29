@@ -24,6 +24,7 @@ const TareaState = props => {
             { nombre: 'Elegir Colores', estado: false, proyectoId: 4},
             { nombre: 'Elegir Plataformas de pago', estado: false, proyectoId: 3},
         ],
+        tareasproyecto: null
     }
 
 
@@ -44,6 +45,7 @@ const TareaState = props => {
         <TareaContext.Provider
             value={{
                 tareas: state.tareas,
+                tareasproyecto: state.tareasproyecto,
                 obtenerTareas
             }}
         >
