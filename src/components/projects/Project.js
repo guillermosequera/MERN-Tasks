@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 
 import projectContext from '../../context/projects/projectContext';
+import tareaContext from '../../context/tasks/tareaContext';
 
 const Project = ({proyecto}) => {
 
@@ -8,13 +9,24 @@ const Project = ({proyecto}) => {
     const proyectosContext = useContext(projectContext);
     const { proyectoActual } = proyectosContext;
 
+    //obtener la funcion del context de tarea
+    const tareasContext = useContext(tareaContext);
+    const { obtenerTareas } = tareaContext;
+
+
+    //funcion para agregar el proyecto actual
+    const seleccionarProyecto = id => {
+        proyectoActual(id); //fijar un proyecto actual
+        obtenerTareas(id); //filtrar las tareas cuando se de click
+    }
+
 
     return (
         <li>
             <button
                 type="button"
                 className=" btn btn-blank"
-                onClick={ () => proyectoActual(proyecto.id) }
+                onClick={ () => seleccionarProyecto(proyecto.id) }
             >{proyecto.nombre}</button>
         </li>
     );
