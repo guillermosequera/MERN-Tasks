@@ -11,7 +11,7 @@ const FormTasks = () => {
 
     //obtener la funcion que agrega las nuevas tareas
     const tareasContext = useContext(tareaContext);
-    const { agregarTarea } = tareasContext;
+    const { errortarea, agregarTarea, validarTarea, obtenerTareas } = tareasContext;
 
     //state del formulario
     const [tarea, guardarTarea] = useState({
@@ -39,6 +39,10 @@ const FormTasks = () => {
         e.preventDefault();
 
         //validar
+        if(nombre.trim() === '') {
+            validarTarea();
+            return;
+        }
 
         //pasar la validacion
 
@@ -47,7 +51,13 @@ const FormTasks = () => {
         tarea.estado = false;
         agregarTarea(tarea);
 
+        // obtener y filtrar las tareas del proyecto actual
+        obtenerTareas(proyectoActual.id);
+
         //reiniciar el form
+        guardarTarea({
+            nombre: ''
+        })
     }
 
     return (
@@ -60,7 +70,8 @@ const FormTasks = () => {
                         type="text"
                         className="input-text"
                         placeholder="Name Tasks"
-                        name={nombre}
+                        name="nombre"
+                        value={nombre}
                         onChange={handleChange}
                     />
                 </div>
@@ -73,6 +84,8 @@ const FormTasks = () => {
                     />
                 </div>
             </form>
+
+            {errortarea ? <p className="mensaje error">El nombre de la tarea es obligatorio</p> : null}
         </div>
     );
 }
