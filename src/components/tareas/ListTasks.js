@@ -1,5 +1,6 @@
 import React, { Fragment, useContext } from 'react';
 import Tasks from './Tasks';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import projectContext from '../../context/projects/projectContext';
 import tareaContext from '../../context/tasks/tareaContext';
@@ -34,12 +35,20 @@ const ListTasks = () => {
             <ul className="listado-tareas">
                 {tareasproyecto.length === 0 
                     ? (<li className="tarea"><p>No homework</p></li>)
-                    : tareasproyecto.map(tarea => (
-                        <Tasks
+                    : 
+                    <TransitionGroup>
+                    {tareasproyecto.map(tarea => (
+                        <CSSTransition
                             key={tarea.id}
-                            tarea={tarea}
-                        />
-                    ))
+                            timeout={200}
+                            classNames="tarea"
+                        >
+                            <Tasks
+                                tarea={tarea}
+                            />
+                        </CSSTransition>
+                    ))}
+                    </TransitionGroup>
                 }
             </ul>
 
