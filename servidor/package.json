@@ -1,0 +1,29 @@
+{
+  "name": "merntaskservidor",
+  "version": "1.0.0",
+  "description": "Node API para Mern Task",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node .",
+    "dev": "nodemon ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guillermosequera/MERN-Tasks.git"
+  },
+  "author": "Guillermo Sequera",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guillermosequera/MERN-Tasks/issues"
+  },
+  "homepage": "https://github.com/guillermosequera/MERN-Tasks#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.9"
+  }
+}
