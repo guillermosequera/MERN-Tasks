@@ -1,5 +1,6 @@
 
 
+
 exports.crearUsuario = (req, res) => {
-    console.log('desde crearUuario');
-};
+    console.log(req.body);
+}
